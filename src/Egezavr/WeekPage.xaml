@@ -4,10 +4,10 @@
              x:Class="Egezavr.WeekPage"
              Title="WeekPage">
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="15">
             <VerticalStackLayout x:Name="MondayStack" Margin="5,10,5,0">
-                <Label Text="Понедельник" TextColor="#363F3E" FontSize="35" />
-                <BoxView HeightRequest="5" Color="#363F3E" Margin="0,5,0,0"/>
+                <Label Text="Понедельник" TextColor="{StaticResource Primary}" FontSize="35" />
+                <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
                 <Border
                     Margin="0,10,0,0"
                     HeightRequest="75"
@@ -15,9 +15,140 @@
                     StrokeThickness="3"
                     BackgroundColor="#E9E9E9"
                     Stroke="#363F3E"
-                    StrokeDashOffset="10"
+                    StrokeDashArray="1,1"
+                    StrokeDashOffset="1"
                     >
-                    <Button 
+                    <Button
+                        Text="+ Добавить занятие"
+                        Padding="0,0,130,0"
+                        FontSize="20"
+                        TextColor="Black"
+                        BackgroundColor="#00000000"/>
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout x:Name="TuesdayStack" Margin="5,10,5,0">
+                <Label Text="Вторник" TextColor="{StaticResource Primary}" FontSize="35" />
+                <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
+                <Border
+                    Margin="0,10,0,0"
+                    HeightRequest="75"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="3"
+                    BackgroundColor="#E9E9E9"
+                    Stroke="#363F3E"
+                    StrokeDashArray="1,1"
+                    StrokeDashOffset="1"
+                    >
+                    <Button
+                        Text="+ Добавить занятие"
+                        Padding="0,0,130,0"
+                        FontSize="20"
+                        TextColor="Black"
+                        BackgroundColor="#00000000"/>
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout x:Name="WednesdayStack" Margin="5,10,5,0">
+                <Label Text="Среда" TextColor="{StaticResource Primary}" FontSize="35" />
+                <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
+                <Border
+                    Margin="0,10,0,0"
+                    HeightRequest="75"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="3"
+                    BackgroundColor="#E9E9E9"
+                    Stroke="#363F3E"
+                    StrokeDashArray="1,1"
+                    StrokeDashOffset="1"
+                    >
+                    <Button
+                        Text="+ Добавить занятие"
+                        Padding="0,0,130,0"
+                        FontSize="20"
+                        TextColor="Black"
+                        BackgroundColor="#00000000"/>
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout x:Name="ThursdayStack" Margin="5,10,5,0">
+                <Label Text="Четверг" TextColor="{StaticResource Primary}" FontSize="35" />
+                <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
+                <Border
+                    Margin="0,10,0,0"
+                    HeightRequest="75"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="3"
+                    BackgroundColor="#E9E9E9"
+                    Stroke="#363F3E"
+                    StrokeDashArray="1,1"
+                    StrokeDashOffset="1"
+                    >
+                    <Button
+                        Text="+ Добавить занятие"
+                        Padding="0,0,130,0"
+                        FontSize="20"
+                        TextColor="Black"
+                        BackgroundColor="#00000000"/>
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout x:Name="FridayStack" Margin="5,10,5,0">
+                <Label Text="Пятница" TextColor="{StaticResource Primary}" FontSize="35" />
+                <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
+                <Border
+                    Margin="0,10,0,0"
+                    HeightRequest="75"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="3"
+                    BackgroundColor="#E9E9E9"
+                    Stroke="#363F3E"
+                    StrokeDashArray="1,1"
+                    StrokeDashOffset="1"
+                    >
+                    <Button
+                        Text="+ Добавить занятие"
+                        Padding="0,0,130,0"
+                        FontSize="20"
+                        TextColor="Black"
+                        BackgroundColor="#00000000"/>
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout x:Name="SaturdayStack" Margin="5,10,5,0">
+                <Label Text="Суббота" TextColor="{StaticResource Primary}" FontSize="35" />
+                <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
+                <Border
+                    Margin="0,10,0,0"
+                    HeightRequest="75"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="3"
+                    BackgroundColor="#E9E9E9"
+                    Stroke="#363F3E"
+                    StrokeDashArray="1,1"
+                    StrokeDashOffset="1"
+                    >
+                    <Button
+                        Text="+ Добавить занятие"
+                        Padding="0,0,130,0"
+                        FontSize="20"
+                        TextColor="Black"
+                        BackgroundColor="#00000000"/>
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout x:Name="SundayStack" Margin="5,10,5,0">
+                <Label Text="Воскресенье" TextColor="{StaticResource Primary}" FontSize="35" />
+                <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
+                <Border
+                    Margin="0,10,0,0"
+                    HeightRequest="75"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="3"
+                    BackgroundColor="#E9E9E9"
+                    Stroke="#363F3E"
+                    StrokeDashArray="1,1"
+                    StrokeDashOffset="1"
+                    >
+                    <Button
+                        Text="+ Добавить занятие"
+                        Padding="0,0,130,0"
+                        FontSize="20"
+                        TextColor="Black"
                         BackgroundColor="#00000000"/>
                 </Border>
             </VerticalStackLayout>
