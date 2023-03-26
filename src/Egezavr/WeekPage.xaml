@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Egezavr.WeekPage"
              Title="WeekPage">
     <ScrollView>
@@ -24,7 +25,8 @@
                         Padding="0,0,130,0"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="#00000000"/>
+                        BackgroundColor="#00000000"
+                        x:Name="MondayButton"/>
                 </Border>
             </VerticalStackLayout>
             <VerticalStackLayout x:Name="TuesdayStack" Margin="5,10,5,0">
@@ -46,7 +48,8 @@
                         Padding="0,0,130,0"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="#00000000"/>
+                        BackgroundColor="#00000000"
+                        x:Name="TuesdayButton"/>
                 </Border>
             </VerticalStackLayout>
             <VerticalStackLayout x:Name="WednesdayStack" Margin="5,10,5,0">
@@ -68,7 +71,8 @@
                         Padding="0,0,130,0"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="#00000000"/>
+                        BackgroundColor="#00000000"
+                        x:Name="WednesdayButton"/>
                 </Border>
             </VerticalStackLayout>
             <VerticalStackLayout x:Name="ThursdayStack" Margin="5,10,5,0">
@@ -90,7 +94,8 @@
                         Padding="0,0,130,0"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="#00000000"/>
+                        BackgroundColor="#00000000"
+                        x:Name="ThursdayButton"/>
                 </Border>
             </VerticalStackLayout>
             <VerticalStackLayout x:Name="FridayStack" Margin="5,10,5,0">
@@ -112,7 +117,8 @@
                         Padding="0,0,130,0"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="#00000000"/>
+                        BackgroundColor="#00000000"
+                        x:Name="FridayButton"/>
                 </Border>
             </VerticalStackLayout>
             <VerticalStackLayout x:Name="SaturdayStack" Margin="5,10,5,0">
@@ -134,7 +140,8 @@
                         Padding="0,0,130,0"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="#00000000"/>
+                        BackgroundColor="#00000000"
+                        x:Name="SaturdayButton"/>
                 </Border>
             </VerticalStackLayout>
             <VerticalStackLayout x:Name="SundayStack" Margin="5,10,5,0">
@@ -156,7 +163,8 @@
                         Padding="0,0,130,0"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="#00000000"/>
+                        BackgroundColor="#00000000"
+                        x:Name="SundayButton"/>
                 </Border>
             </VerticalStackLayout>
         </VerticalStackLayout>

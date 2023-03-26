@@ -1,3 +1,6 @@
+using CommunityToolkit.Maui.Views;
+using Microsoft.Maui.Controls.Internals;
+
 namespace Egezavr;
 
 public partial class WeekPage : ContentPage
@@ -8,14 +11,17 @@ public partial class WeekPage : ContentPage
 
 	}
 
-	private async void AddButtonClicked(object sender,EventArgs e)
+	private void AddButtonClicked(object sender,EventArgs e)
 	{
-		Button button = sender as Button ?? throw new ArgumentException($"{sender} is not Button type");
-		
-		Border buttonBorder = button.Parent as Border ?? throw new ArgumentException($"Parent of {button} is not Border");
+		Button btn = sender as Button ?? throw new ArgumentException($"{sender} is not Button");
 
-        VerticalStackLayout dayStack = buttonBorder.Parent as VerticalStackLayout ?? throw new ArgumentException($"Parent of {buttonBorder} is not VerticalStackLayout");
+		VerticalStackLayout dayStack = btn.Parent.Parent as VerticalStackLayout ?? throw new ArgumentException();
+		int index = MainVerticalStack.IndexOf(dayStack);
+		if (index == -1) throw new ArgumentException($"{dayStack} is not in the {MainVerticalStack}");
 
-        var action = await DisplayActionSheet("Выбрать язык", "Отмена", "Удалить", "C#", "JavaScript", "Java");
+		var popup = new PopupChooseActivity((MauiProgram.Days)index);
+
+		this.ShowPopup(popup);
+
     }
 }
