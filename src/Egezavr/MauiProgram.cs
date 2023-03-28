@@ -19,21 +19,4 @@ public static class MauiProgram
 
 		return builder.Build();
 	}
-	
-	public enum Days
-	{
-		Monday,
-		Tuesday,
-		Wednesday,
-		Thursday,
-		Friday,
-		Saturday,
-		Sunday
-	}
-
-	public static List<string> examOptions = new() { 
-		"ЕГЭ | Русский язык",
-		"ЕГЭ | Математика базовая",
-		"ЕГЭ | Математика профильная"
-	};
 }

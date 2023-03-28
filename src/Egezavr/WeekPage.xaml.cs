@@ -19,13 +19,13 @@ public partial class WeekPage : ContentPage
 		int index = MainVerticalStack.IndexOf(dayStack);
 		if (index == -1) throw new ArgumentException($"{dayStack} is not in the {MainVerticalStack}");
 
-		var popup = new PopupChooseActivity((MauiProgram.Days)index);
+		var popup = new PopupChooseActivity((Constants.Days)index);
 
 		var result = await this.ShowPopupAsync(popup);
 
 		if (result is Activity activity)
 		{
-			dayStack.Add(activity.GetVerticalStack());
+			dayStack.Insert(dayStack.Count - 1, activity.GetVerticalStack());
 		}
     }
 }

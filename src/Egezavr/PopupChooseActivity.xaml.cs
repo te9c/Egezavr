@@ -6,15 +6,15 @@ namespace Egezavr;
 
 public partial class PopupChooseActivity : Popup
 {
-	MauiProgram.Days day;
+	Constants.Days day;
     int examOptionIndex = -1;
 
-	public PopupChooseActivity(MauiProgram.Days day)
+	public PopupChooseActivity(Constants.Days day)
 	{
 		this.day = day;
 		InitializeComponent();
 
-		ExamPicker.ItemsSource = MauiProgram.examOptions;
+		ExamPicker.ItemsSource = Constants.examOptions;
     }
 
     private void Button_Clicked(object sender, EventArgs e)
