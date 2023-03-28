@@ -19,36 +19,13 @@ public partial class PopupChooseActivity : Popup
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        if (examOptionIndex == -1)
+        Activity activity = new(day, examOptionIndex,
+            ExamTimePickerFrom.Time, ExamTimePickerTo.Time);
+        if (!activity.IsValidActivity())
         {
             return; // implement incorrect input data message
         }
-
-
-        VerticalStackLayout activityStack = new();
-        activityStack.Add(new Border
-        {
-            Margin = new Thickness(0, 10, 0, 0),
-            HeightRequest = 75,
-            StrokeShape = new RoundRectangle() { CornerRadius = 20 },
-            StrokeThickness = 3,
-            BackgroundColor = Color.FromArgb("#E9E9E9"),
-            Stroke = Color.FromArgb("#363F3E"),
-            StrokeDashArray = new() { 1, 1 },
-            StrokeDashOffset = 1,
-        }
-        .Content = new Label()
-        {
-            Text = MauiProgram.examOptions[examOptionIndex],
-            FontSize=20,
-            TextColor = Color.Parse("Black"),
-            BackgroundColor = Color.FromArgb("#00000000"),
-        }
-        );
-
-        
-
-		Close(activityStack);
+		Close(activity);
     }
 
     private void ExamPicker_SelectedIndexChanged(object sender, EventArgs e)

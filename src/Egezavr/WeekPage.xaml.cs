@@ -11,7 +11,7 @@ public partial class WeekPage : ContentPage
 
 	}
 
-	private void AddButtonClicked(object sender,EventArgs e)
+	private async void AddButtonClicked(object sender,EventArgs e)
 	{
 		Button btn = sender as Button ?? throw new ArgumentException($"{sender} is not Button");
 
@@ -21,7 +21,11 @@ public partial class WeekPage : ContentPage
 
 		var popup = new PopupChooseActivity((MauiProgram.Days)index);
 
-		this.ShowPopup(popup);
+		var result = await this.ShowPopupAsync(popup);
 
+		if (result is Activity activity)
+		{
+			dayStack.Add(activity.GetVerticalStack());
+		}
     }
 }
