@@ -39,6 +39,27 @@ namespace Egezavr
             if (!IsValidActivity())
                 throw new ArgumentException($"{this} is not valid");
 
+            Grid grid = new()
+            {
+                HorizontalOptions = LayoutOptions.Fill,
+                VerticalOptions = LayoutOptions.Fill,
+                RowDefinitions =
+                        {
+                            new RowDefinition(),
+                        },
+                ColumnDefinitions =
+                        {
+                            new ColumnDefinition(),
+                            new ColumnDefinition{ Width = new GridLength(40) },
+                        },
+            };
+            grid.Add(new Button {
+                HorizontalOptions = LayoutOptions.Fill,
+                VerticalOptions = LayoutOptions.Fill,
+                BackgroundColor = Color.Parse("white"),
+                
+            }, 0, 1);
+
             VerticalStackLayout activityStack = new() { 
                 new Border
                 {
@@ -46,17 +67,18 @@ namespace Egezavr
                     HeightRequest = 75,
                     StrokeShape = new RoundRectangle {CornerRadius = 20 },
                     StrokeThickness = 3,
-                    BackgroundColor = Color.FromArgb("#E9E9E9"),
+                    BackgroundColor = Color.FromArgb("#1282A2"),
                     Stroke = Color.FromArgb("#363F3E"),
-                    StrokeDashArray = { 1, 1 },
-                    StrokeDashOffset = 1,
-                    Content = new Label
-                    {
-                        Text = Constants.examOptions[ExamOptionIndex],
-                        FontSize = 20,
-                        TextColor = Color.Parse("Black"),
-                        BackgroundColor = Color.FromArgb("#00000000"),
-                    }
+                    Content = grid,
+                    //Content = new Label
+                    //{
+                    //    Text = Constants.examOptions[ExamOptionIndex],
+                    //    FontSize = 20,
+                    //    TextColor = Color.Parse("Black"),
+                    //    BackgroundColor = Color.FromArgb("#00000000"),
+                    //    VerticalTextAlignment = TextAlignment.Center,
+                    //    HorizontalTextAlignment = TextAlignment.Center,
+                    //}
                 }
             };
             

@@ -6,7 +6,7 @@ namespace Egezavr;
 
 public partial class PopupChooseActivity : Popup
 {
-	Constants.Days day;
+	readonly Constants.Days day;
     int examOptionIndex = -1;
 
 	public PopupChooseActivity(Constants.Days day)
