@@ -8,10 +8,12 @@ public partial class PopupChooseActivity : Popup
 {
 	readonly Constants.Days day;
     int examOptionIndex = -1;
+    VerticalStackLayout dayStack;
 
-	public PopupChooseActivity(Constants.Days day)
+	public PopupChooseActivity(Constants.Days day, VerticalStackLayout dayStack)
 	{
 		this.day = day;
+        this.dayStack = dayStack;
 		InitializeComponent();
 
 		ExamPicker.ItemsSource = Constants.examOptions;
@@ -20,7 +22,7 @@ public partial class PopupChooseActivity : Popup
     private void Button_Clicked(object sender, EventArgs e)
     {
         Activity activity = new(day, examOptionIndex,
-            ExamTimePickerFrom.Time, ExamTimePickerTo.Time);
+            ExamTimePickerFrom.Time, ExamTimePickerTo.Time, dayStack);
         if (!activity.IsValidActivity())
         {
             return; // implement incorrect input data message

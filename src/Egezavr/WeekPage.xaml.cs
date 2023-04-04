@@ -15,11 +15,11 @@ public partial class WeekPage : ContentPage
 	{
 		Button btn = sender as Button ?? throw new ArgumentException($"{sender} is not Button");
 
-		VerticalStackLayout dayStack = btn.Parent.Parent as VerticalStackLayout ?? throw new ArgumentException();
+		VerticalStackLayout dayStack = btn.Parent.Parent as VerticalStackLayout ?? throw new ArgumentException(btn.Parent.Parent.ToString());
 		int index = MainVerticalStack.IndexOf(dayStack);
 		if (index == -1) throw new ArgumentException($"{dayStack} is not in the {MainVerticalStack}");
 
-		var popup = new PopupChooseActivity((Constants.Days)index);
+		var popup = new PopupChooseActivity((Constants.Days)index, dayStack);
 
 		var result = await this.ShowPopupAsync(popup);
 

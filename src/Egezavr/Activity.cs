@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Egezavr
 {
@@ -14,14 +15,16 @@ namespace Egezavr
         public int ExamOptionIndex { get; private set; }
         public TimeSpan TimeFrom { get; private set; }
         public TimeSpan TimeTo { get; private set; }
+        public VerticalStackLayout DayStack { get; private set; }
 
         public Activity(Constants.Days day, int examOptionIndex,
-            TimeSpan timeFrom, TimeSpan timeTo)
+            TimeSpan timeFrom, TimeSpan timeTo, VerticalStackLayout dayStack)
         {
             Day = day;
             ExamOptionIndex = examOptionIndex;
             TimeFrom = timeFrom;
             TimeTo = timeTo;
+            DayStack = dayStack;
         }
 
         public bool IsValidActivity()
@@ -44,21 +47,30 @@ namespace Egezavr
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
                 RowDefinitions =
-                        {
-                            new RowDefinition(),
-                        },
+                {
+                    new RowDefinition(),
+                },
                 ColumnDefinitions =
-                        {
-                            new ColumnDefinition(),
-                            new ColumnDefinition{ Width = new GridLength(40) },
-                        },
+                {
+                    new ColumnDefinition(),
+                    new ColumnDefinition{ Width = new GridLength(70) },
+                },
             };
-            grid.Add(new Button {
+
+            // exit button
+            Button exitButton = new()
+            {
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
-                BackgroundColor = Color.Parse("white"),
-                
-            }, 0, 1);
+                BackgroundColor = Colors.Transparent,
+            };
+            grid.Add(exitButton, 1, 0);
+
+            grid.Add(new VerticalStackLayout
+            {
+                HorizontalOptions = LayoutOptions.Fill,
+                VerticalOptions = LayoutOptions.Fill,
+            });
 
             VerticalStackLayout activityStack = new() { 
                 new Border
@@ -74,14 +86,16 @@ namespace Egezavr
                     //{
                     //    Text = Constants.examOptions[ExamOptionIndex],
                     //    FontSize = 20,
-                    //    TextColor = Color.Parse("Black"),
+                    //    TextColor = Colors.Black,
                     //    BackgroundColor = Color.FromArgb("#00000000"),
                     //    VerticalTextAlignment = TextAlignment.Center,
                     //    HorizontalTextAlignment = TextAlignment.Center,
                     //}
                 }
             };
-            
+            exitButton.Clicked += (sender, args) => {
+                DayStack.Remove(activityStack);
+            };
 
             return activityStack;
         }
