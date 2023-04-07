@@ -27,7 +27,7 @@ namespace Egezavr
             TimeTo = timeTo;
 
             Margin = new Thickness(0, 10, 0, 0);
-            HeightRequest = 75;
+            HeightRequest = 75; // could be 93.75 if box is to small
             StrokeShape = new RoundRectangle { CornerRadius = 20 };
             StrokeThickness = 3;
             BackgroundColor = Color.FromArgb("#1282A2");
@@ -39,12 +39,13 @@ namespace Egezavr
                 VerticalOptions = LayoutOptions.Fill,
                 RowDefinitions =
                 {
-                    new RowDefinition(),
+                    new RowDefinition{ Height = new GridLength(1.62,GridUnitType.Star) },
+                    new RowDefinition{ },
                 },
                 ColumnDefinitions =
                 {
                     new ColumnDefinition(),
-                    new ColumnDefinition{ Width = new GridLength(70) },
+                    new ColumnDefinition{ Width = new GridLength(75) },
                 },
             };
 
@@ -53,14 +54,26 @@ namespace Egezavr
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
                 BackgroundColor = Colors.Transparent,
+                //ImageSource = ImageSource.FromFile("x_circle.svg"),
             };
             grid.Add(exitButton, 1, 0);
+            grid.SetRowSpan(exitButton, 2);
 
-            grid.Add(new VerticalStackLayout
+            grid.Add(new Label
             {
-                HorizontalOptions = LayoutOptions.Fill,
-                VerticalOptions = LayoutOptions.Fill,
-            });
+                Text = Constants.examOptions[examOptionIndex],
+                VerticalTextAlignment = TextAlignment.End,
+                FontSize = 18,
+                Margin = new Thickness(15, 0, 0, 0),
+                TextColor = Colors.WhiteSmoke,
+            }, 0, 0);
+            grid.Add(new Label
+            {
+                Text = $"{TimeFrom:hh\\:mm}-{TimeTo:hh\\:mm}",
+                VerticalTextAlignment = TextAlignment.Start,
+                Margin = new Thickness(15, 0, 0, 0),
+                TextColor = Colors.WhiteSmoke
+            }, 0, 1);
 
             exitButton.Clicked += (sender, args) =>
             {

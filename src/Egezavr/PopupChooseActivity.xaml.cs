@@ -19,12 +19,13 @@ public partial class PopupChooseActivity : Popup
 
     private void Button_Clicked(object sender, EventArgs e)
     {
+        if (examOptionIndex == -1)
+            return;
         Activity activity = new(day, examOptionIndex,
             ExamTimePickerFrom.Time, ExamTimePickerTo.Time);
         if (!activity.IsValidActivity())
-        {
             return; // implement incorrect input data message
-        }
+
 		Close(activity);
     }
 

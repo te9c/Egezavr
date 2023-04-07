@@ -17,9 +17,11 @@
                 <Label Text="Время:" FontSize="22"/>
                 <HorizontalStackLayout Spacing="0">
                     <Label Text="С" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18"/>
-                    <TimePicker x:Name="ExamTimePickerFrom" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{StaticResource Gray600}"/>
+                    <TimePicker x:Name="ExamTimePickerFrom" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"
+                                BackgroundColor="{StaticResource Gray600}" Time="12:00"/>
                     <Label Text="До" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18"/>
-                    <TimePicker x:Name="ExamTimePickerTo" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <TimePicker x:Name="ExamTimePickerTo" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"
+                                BackgroundColor="{StaticResource Gray600}" Time="12:00"/>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             
