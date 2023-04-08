@@ -30,16 +30,18 @@ namespace Egezavr
             HeightRequest = 75; // could be 93.75 if box is to small
             StrokeShape = new RoundRectangle { CornerRadius = 20 };
             StrokeThickness = 3;
-            BackgroundColor = Color.FromArgb("#1282A2");
+            BackgroundColor = Constants.examColors[examOptionIndex];
+            //Background = Constants.examGradientColor[0];
             Stroke = Color.FromArgb("#363F3E");
 
             Grid grid = new()
             {
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
+                RowSpacing = 0,
                 RowDefinitions =
                 {
-                    new RowDefinition{ Height = new GridLength(1.62,GridUnitType.Star) },
+                    new RowDefinition{ Height = new GridLength(1.5,GridUnitType.Star) },
                     new RowDefinition{ },
                 },
                 ColumnDefinitions =
@@ -54,10 +56,18 @@ namespace Egezavr
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
                 BackgroundColor = Colors.Transparent,
-                //ImageSource = ImageSource.FromFile("x_circle.svg"),
+                // Source = ImageSource.FromFile("x_circle.svg"),
             };
+            Image exitButtonImage = new()
+            {
+                Source = ImageSource.FromFile("x_circle.svg"),
+                WidthRequest = HeightRequest * 0.7,
+                HeightRequest = HeightRequest * 0.7,
+            };
+            grid.Add(exitButtonImage, 1, 0);
             grid.Add(exitButton, 1, 0);
             grid.SetRowSpan(exitButton, 2);
+            grid.SetRowSpan(exitButtonImage , 2);
 
             grid.Add(new Label
             {
@@ -65,14 +75,14 @@ namespace Egezavr
                 VerticalTextAlignment = TextAlignment.End,
                 FontSize = 18,
                 Margin = new Thickness(15, 0, 0, 0),
-                TextColor = Colors.WhiteSmoke,
+                TextColor = Colors.Black,
             }, 0, 0);
             grid.Add(new Label
             {
                 Text = $"{TimeFrom:hh\\:mm}-{TimeTo:hh\\:mm}",
                 VerticalTextAlignment = TextAlignment.Start,
                 Margin = new Thickness(15, 0, 0, 0),
-                TextColor = Colors.WhiteSmoke
+                TextColor = Colors.Black
             }, 0, 1);
 
             exitButton.Clicked += (sender, args) =>
