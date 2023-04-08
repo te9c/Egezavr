@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Views;
 using Microsoft.Maui.Controls.Internals;
+using System.Collections.Immutable;
 
 namespace Egezavr;
 
@@ -27,5 +28,37 @@ public partial class WeekPage : ContentPage
 		{
 			dayStack.Insert(dayStack.Count - 1, activity);
 		}
+    }
+
+    private void DayStack_ChildAdded(object sender, ElementEventArgs e)
+    {
+		var stack = sender as VerticalStackLayout ?? throw new ArgumentException();
+
+		bool itemMoved;
+		do
+		{
+			itemMoved = false;
+			for (int i = 0; i < stack.Count - 2; i++)
+			{
+				var activity = stack.Children[i] as Activity;
+				var activityPlusOne = stack.Children[i + 1] as Activity;
+				if (activity is null || activityPlusOne is null)
+					continue;
+
+
+				if (activity.TimeFrom > activityPlusOne.TimeFrom)
+				{
+					var lowerValue = activityPlusOne;
+					
+					stack.Remove(activity);
+					stack.Remove(activityPlusOne);
+
+					stack.Children.Insert(i, lowerValue);
+                    stack.Children.Insert(i + 1, activity);
+
+					itemMoved = true;
+				}
+			}
+		} while (itemMoved);
     }
 }

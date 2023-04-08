@@ -6,7 +6,7 @@
              Title="WeekPage">
     <ScrollView>
         <VerticalStackLayout Spacing="15" Padding="5,0,5,10" x:Name="MainVerticalStack">
-            <VerticalStackLayout x:Name="MondayStack" Margin="5,10,5,0">
+            <VerticalStackLayout x:Name="MondayStack" Margin="5,10,5,0" ChildAdded="DayStack_ChildAdded">
                 <Label Text="Понедельник" TextColor="{StaticResource Primary}" FontSize="35" />
                 <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
                 <Border
@@ -29,7 +29,7 @@
                         x:Name="MondayButton"/>
                 </Border>
             </VerticalStackLayout>
-            <VerticalStackLayout x:Name="TuesdayStack" Margin="5,10,5,0">
+            <VerticalStackLayout x:Name="TuesdayStack" Margin="5,10,5,0" ChildAdded="DayStack_ChildAdded">
                 <Label Text="Вторник" TextColor="{StaticResource Primary}" FontSize="35" />
                 <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
                 <Border
@@ -52,7 +52,7 @@
                         x:Name="TuesdayButton"/>
                 </Border>
             </VerticalStackLayout>
-            <VerticalStackLayout x:Name="WednesdayStack" Margin="5,10,5,0">
+            <VerticalStackLayout x:Name="WednesdayStack" Margin="5,10,5,0" ChildAdded="DayStack_ChildAdded">
                 <Label Text="Среда" TextColor="{StaticResource Primary}" FontSize="35" />
                 <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
                 <Border
@@ -75,7 +75,7 @@
                         x:Name="WednesdayButton"/>
                 </Border>
             </VerticalStackLayout>
-            <VerticalStackLayout x:Name="ThursdayStack" Margin="5,10,5,0">
+            <VerticalStackLayout x:Name="ThursdayStack" Margin="5,10,5,0" ChildAdded="DayStack_ChildAdded">
                 <Label Text="Четверг" TextColor="{StaticResource Primary}" FontSize="35" />
                 <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
                 <Border
@@ -98,7 +98,7 @@
                         x:Name="ThursdayButton"/>
                 </Border>
             </VerticalStackLayout>
-            <VerticalStackLayout x:Name="FridayStack" Margin="5,10,5,0">
+            <VerticalStackLayout x:Name="FridayStack" Margin="5,10,5,0" ChildAdded="DayStack_ChildAdded">
                 <Label Text="Пятница" TextColor="{StaticResource Primary}" FontSize="35" />
                 <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
                 <Border
@@ -121,7 +121,7 @@
                         x:Name="FridayButton"/>
                 </Border>
             </VerticalStackLayout>
-            <VerticalStackLayout x:Name="SaturdayStack" Margin="5,10,5,0">
+            <VerticalStackLayout x:Name="SaturdayStack" Margin="5,10,5,0" ChildAdded="DayStack_ChildAdded">
                 <Label Text="Суббота" TextColor="{StaticResource Primary}" FontSize="35" />
                 <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
                 <Border
@@ -144,7 +144,7 @@
                         x:Name="SaturdayButton"/>
                 </Border>
             </VerticalStackLayout>
-            <VerticalStackLayout x:Name="SundayStack" Margin="5,10,5,0">
+            <VerticalStackLayout x:Name="SundayStack" Margin="5,10,5,0" ChildAdded="DayStack_ChildAdded">
                 <Label Text="Воскресенье" TextColor="{StaticResource Primary}" FontSize="35" />
                 <BoxView HeightRequest="5" Color="{StaticResource Gray500}" Margin="0,5,0,0"/>
                 <Border
