@@ -33,4 +33,18 @@ public partial class PopupChooseActivity : Popup
     {
         examOptionIndex = ExamPicker.SelectedIndex;
     }
+
+    private void ExamTimePicker_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == "Time")
+        {
+            if (sender == ExamTimePickerFrom)
+                if (ExamTimePickerFrom.Time > ExamTimePickerTo.Time)
+                    ExamTimePickerTo.Time = ExamTimePickerFrom.Time;
+
+            if (sender == ExamTimePickerTo)
+                if (ExamTimePickerTo.Time < ExamTimePickerFrom.Time)
+                    ExamTimePickerFrom.Time = ExamTimePickerTo.Time;
+        }
+    }
 }

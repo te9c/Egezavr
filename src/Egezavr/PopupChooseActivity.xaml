@@ -18,10 +18,10 @@
                 <HorizontalStackLayout Spacing="0">
                     <Label Text="С" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18"/>
                     <TimePicker x:Name="ExamTimePickerFrom" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"
-                                BackgroundColor="{StaticResource Gray600}" Time="12:00"/>
+                                BackgroundColor="{StaticResource Gray600}" Time="12:00" PropertyChanged="ExamTimePicker_PropertyChanged"/>
                     <Label Text="До" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18"/>
                     <TimePicker x:Name="ExamTimePickerTo" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"
-                                BackgroundColor="{StaticResource Gray600}" Time="12:00"/>
+                                BackgroundColor="{StaticResource Gray600}" Time="12:00" PropertyChanged="ExamTimePicker_PropertyChanged"/>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             
