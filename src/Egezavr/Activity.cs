@@ -30,7 +30,7 @@ namespace Egezavr
             HeightRequest = 75; // could be 93.75 if box is to small
             StrokeShape = new RoundRectangle { CornerRadius = 20 };
             StrokeThickness = 3;
-            BackgroundColor = Constants.examColors[examOptionIndex];
+            BackgroundColor = Constants.ExamColors[examOptionIndex];
             //Background = Constants.examGradientColor[0];
             Stroke = Color.FromArgb("#363F3E");
 
@@ -71,7 +71,7 @@ namespace Egezavr
 
             grid.Add(new Label
             {
-                Text = Constants.examOptions[examOptionIndex],
+                Text = Constants.ExamOptions[examOptionIndex],
                 VerticalTextAlignment = TextAlignment.End,
                 FontSize = 18,
                 Margin = new Thickness(15, 0, 0, 0),

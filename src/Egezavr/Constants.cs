@@ -8,6 +8,17 @@ namespace Egezavr
 {
     public static class Constants
     {
+        public const string DatabaseFilename = "EgezavrActivites.db3";
+
+        public const SQLite.SQLiteOpenFlags Flags =
+            SQLite.SQLiteOpenFlags.ReadWrite |
+            SQLite.SQLiteOpenFlags.Create |
+            SQLite.SQLiteOpenFlags.SharedCache;
+
+        public static string DatabasePath =>
+            Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
+
+
         public enum Days
         {
             Monday,
@@ -19,14 +30,14 @@ namespace Egezavr
             Sunday
         }
 
-        public static readonly List<string> examOptions = new()
+        public static List<string> ExamOptions => new()
         {
             "ЕГЭ | Русский язык",
             "ЕГЭ | Математика базовая",
             "ЕГЭ | Математика профильная"
         };
 
-        public static readonly List<Color> examColors = new()
+        public static List<Color> ExamColors => new()
         {
             Color.FromArgb("#35C2E9"),
             Color.FromArgb("#F2C14E"),

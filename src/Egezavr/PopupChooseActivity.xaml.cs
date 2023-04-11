@@ -14,7 +14,7 @@ public partial class PopupChooseActivity : Popup
 		this.day = day;
 		InitializeComponent();
 
-		ExamPicker.ItemsSource = Constants.examOptions;
+		ExamPicker.ItemsSource = Constants.ExamOptions;
     }
 
     private void Button_Clicked(object sender, EventArgs e)

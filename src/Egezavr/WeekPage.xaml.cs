@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui.Views;
+using Egezavr.Data;
 using Microsoft.Maui.Controls.Internals;
 using System.Collections.Immutable;
 
@@ -10,6 +11,26 @@ public partial class WeekPage : ContentPage
 	{
 		InitializeComponent();
 
+		InitActivites();
+	}
+
+	private async void InitActivites()
+	{
+		await App.ActivityRepository.InsertItemAsync(new ActivityItem {
+			Activities = { new Activity(Constants.Days.Monday, 1, new TimeSpan(12, 0, 0), new TimeSpan(12, 0, 0)) } });
+		var activityItems = await App.ActivityRepository.GetAllActivities();
+
+		// for (int i = 0; i < 7; i++)
+		//{
+		//	var child = MainVerticalStack[i];
+		//	if (child is VerticalStackLayout dayStack)
+		//	{
+		//		foreach (var activity in activityItems[i].Activities)
+		//		{
+		//			dayStack.Insert(dayStack.Count - 1, activity);
+		//		}
+		//	}
+		//}
 	}
 
 	private async void AddButtonClicked(object sender,EventArgs e)
@@ -61,4 +82,19 @@ public partial class WeekPage : ContentPage
 			}
 		} while (itemMoved);
     }
+	
+	//private async void SaveActivityList(object sender,  EventArgs e)
+	//{
+	//	var dayStack = sender as VerticalStackLayout ?? throw new ArgumentException(sender.ToString());
+	//	var path = FileSystem.Current.AppDataDirectory;
+	//	var fullPath = Path.Combine(path, "MyFile.txt");
+
+		
+	//	List<Activity> activityList = new();
+	//	foreach (var i in dayStack)
+	//	{
+	//		if (i is Activity activity)
+	//			activityList.Append(activity);
+	//	}
+	//}
 }
