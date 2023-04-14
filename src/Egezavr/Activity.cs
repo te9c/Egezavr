@@ -1,6 +1,8 @@
 ﻿using AndroidX.Lifecycle;
+using Egezavr.Data;
 using Microsoft.Maui.Controls.Shapes;
 using Org.Apache.Http.Conn;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,10 +19,25 @@ namespace Egezavr
         public int ExamOptionIndex { get; private set; }
         public TimeSpan TimeFrom { get; private set; }
         public TimeSpan TimeTo { get; private set; }
+        public ActivityItem CurrentActivityItem { get; private set; }
 
         public Activity(Constants.Days day, int examOptionIndex,
-            TimeSpan timeFrom, TimeSpan timeTo)
+            TimeSpan timeFrom, TimeSpan timeTo) : this(day,examOptionIndex, timeFrom, timeTo, new ActivityItem()) { }
+
+        public Activity(Constants.Days day, int examOptionIndex,
+            TimeSpan timeFrom, TimeSpan timeTo, ActivityItem activityItem)
         {
+            if (activityItem.ID == 0)
+            {
+                activityItem = new() { Day = day, ExamOptionIndex = examOptionIndex, TimeFrom = timeFrom, TimeTo = timeTo };
+                App.ActivityRepository.SaveActivity(activityItem);
+                CurrentActivityItem = activityItem;
+            }
+            else
+            {
+                CurrentActivityItem = activityItem;
+            }
+
             Day = day;
             ExamOptionIndex = examOptionIndex;
             TimeFrom = timeFrom;
@@ -67,7 +84,7 @@ namespace Egezavr
             grid.Add(exitButtonImage, 1, 0);
             grid.Add(exitButton, 1, 0);
             grid.SetRowSpan(exitButton, 2);
-            grid.SetRowSpan(exitButtonImage , 2);
+            grid.SetRowSpan(exitButtonImage, 2);
 
             grid.Add(new Label
             {
@@ -89,6 +106,7 @@ namespace Egezavr
             {
                 var stack = Parent as StackBase;
                 stack.Remove(this);
+                App.ActivityRepository.DeleteActivity(CurrentActivityItem);
             };
 
             Content = grid;

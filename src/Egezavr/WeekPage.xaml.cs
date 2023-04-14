@@ -1,3 +1,4 @@
+using Android.Util;
 using CommunityToolkit.Maui.Views;
 using Egezavr.Data;
 using Microsoft.Maui.Controls.Internals;
@@ -11,27 +12,14 @@ public partial class WeekPage : ContentPage
 	{
 		InitializeComponent();
 
-		InitActivites();
-	}
-
-	private async void InitActivites()
-	{
-		await App.ActivityRepository.InsertItemAsync(new ActivityItem {
-			Activities = { new Activity(Constants.Days.Monday, 1, new TimeSpan(12, 0, 0), new TimeSpan(12, 0, 0)) } });
-		var activityItems = await App.ActivityRepository.GetAllActivities();
-
-		// for (int i = 0; i < 7; i++)
-		//{
-		//	var child = MainVerticalStack[i];
-		//	if (child is VerticalStackLayout dayStack)
-		//	{
-		//		foreach (var activity in activityItems[i].Activities)
-		//		{
-		//			dayStack.Insert(dayStack.Count - 1, activity);
-		//		}
-		//	}
-		//}
-	}
+		List<ActivityItem> activities = App.ActivityRepository.GetActivities();
+		foreach (var activityItem in activities)
+		{
+			var dayStack = MainVerticalStack[(int)activityItem.Day] as VerticalStackLayout;
+			dayStack.Insert(dayStack.Count - 1, new Activity(
+				activityItem.Day, activityItem.ExamOptionIndex, activityItem.TimeFrom, activityItem.TimeFrom, activityItem));
+		}
+    }
 
 	private async void AddButtonClicked(object sender,EventArgs e)
 	{

@@ -21,10 +21,11 @@ public partial class PopupChooseActivity : Popup
     {
         if (examOptionIndex == -1)
             return;
+        if (ExamTimePickerTo.Time < ExamTimePickerFrom.Time)
+            return;
+
         Activity activity = new(day, examOptionIndex,
             ExamTimePickerFrom.Time, ExamTimePickerTo.Time);
-        if (!activity.IsValidActivity())
-            return; // implement incorrect input data message
 
 		Close(activity);
     }

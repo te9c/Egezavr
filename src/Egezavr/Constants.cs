@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Egezavr.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,6 @@ namespace Egezavr
 
         public static string DatabasePath =>
             Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
-
 
         public enum Days
         {
