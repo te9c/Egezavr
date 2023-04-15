@@ -9,10 +9,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>Egezavr</ApplicationTitle>
+		<ApplicationTitle>Егэзавр</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.egezavr</ApplicationId>
+		<ApplicationId>com.te9c.egezavr</ApplicationId>
 		<ApplicationIdGuid>61C0CFFF-7980-43C8-A085-F72817C2623E</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -53,10 +53,11 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg"
+                  ForegroundFile="Resources\AppIcon\appiconfg.svg" ForegroundScale="0.5"/>
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+        <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#ffffff" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -71,7 +72,6 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\x_circle.svg" />
-	  <None Remove="Resources\Images\x_square.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
