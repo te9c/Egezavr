@@ -34,7 +34,14 @@ namespace Egezavr
         {
             "ЕГЭ | Русский язык",
             "ЕГЭ | Математика базовая",
-            "ЕГЭ | Математика профильная"
+            "ЕГЭ | Математика профильная",
+            "ЕГЭ | Информатика",
+            "ЕГЭ | Физика",
+            "ОГЭ | Математика",
+            "ОГЭ | Русский язык",
+            "ОГЭ | Физика",
+            "ОГЭ | Информатика",
+            "ОГЭ | Химия"
         };
 
         public static List<Color> ExamColors => new()
@@ -42,6 +49,13 @@ namespace Egezavr
             Color.FromArgb("#35C2E9"),
             Color.FromArgb("#F2C14E"),
             Color.FromArgb("#EBA2AA"),
+            Color.FromArgb("#99BD98"),
+            Color.FromArgb("#EEA09B"),
+            Color.FromArgb("#F7B2BD"),
+            Color.FromArgb("#E2C2FF"),
+            Color.FromArgb("#E5A59A"),
+            Color.FromArgb("#AFB4CF"),
+            Color.FromArgb("#AEB2E0"),
         };
 
         /* Enchantment: add gradients instead of colors for activity background
