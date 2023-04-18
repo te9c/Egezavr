@@ -1,7 +1,9 @@
-﻿using AndroidX.Lifecycle;
+﻿using Android.App;
+using AndroidX.Lifecycle;
 using Egezavr.Data;
 using Microsoft.Maui.Controls.Shapes;
 using Org.Apache.Http.Conn;
+using Plugin.LocalNotification;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -32,6 +34,28 @@ namespace Egezavr
                 activityItem = new() { Day = day, ExamOptionIndex = examOptionIndex, TimeFrom = timeFrom, TimeTo = timeTo };
                 App.ActivityRepository.SaveActivity(activityItem);
                 CurrentActivityItem = activityItem;
+
+                var request = new NotificationRequest
+                {
+                    NotificationId = CurrentActivityItem.ID,
+                    Title = $"Начинается занятие!",
+                    Description = $"{Constants.ExamOptions[examOptionIndex]}",
+                    Subtitle = "Занятие",
+                    BadgeNumber = 42,
+                    Schedule = new NotificationRequestSchedule
+                    {
+                        NotifyTime = CalculateDateTime(day, timeFrom),
+                        NotifyRepeatInterval = TimeSpan.FromDays(7),
+                    },
+                    Android =
+                    {
+                        IconSmallName =
+                        {
+                            ResourceName = "notificationicon"
+                        }
+                    }
+                };
+                LocalNotificationCenter.Current.Show(request);
             }
             else
             {
@@ -107,6 +131,7 @@ namespace Egezavr
                 var stack = Parent as StackBase;
                 stack.Remove(this);
                 App.ActivityRepository.DeleteActivity(CurrentActivityItem);
+                LocalNotificationCenter.Current.Clear(CurrentActivityItem.ID);
             };
 
             Content = grid;
@@ -120,6 +145,25 @@ namespace Egezavr
                 return false;
 
             return true;
+        }
+
+        private static DateTime CalculateDateTime(Constants.Days day, TimeSpan timeFrom)
+        {
+            DateTime dateTime = DateTime.Today;
+            
+            Constants.Days dayOfWeek = Constants.Days.Monday;
+            if ((int)dateTime.DayOfWeek == 0)
+                dayOfWeek = Constants.Days.Sunday;
+            else
+                dayOfWeek += (int)dateTime.DayOfWeek - 1;
+
+            if ((int)day >= (int)dayOfWeek)
+                dateTime = dateTime.AddDays((int)day - (int)dayOfWeek);
+            else
+                dateTime = dateTime.AddDays(6 - (int)dayOfWeek + (int)day + 1);
+            dateTime = dateTime.AddMinutes(timeFrom.TotalMinutes);
+
+            return dateTime;
         }
     }
 }
