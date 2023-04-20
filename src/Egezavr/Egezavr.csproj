@@ -53,8 +53,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg"
-                  ForegroundFile="Resources\AppIcon\appiconfg.svg" ForegroundScale="0.5"/>
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" ForegroundScale="0.5" />
 
 		<!-- Splash Screen -->
         <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#ffffff" />
@@ -76,6 +75,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
+	  <PackageReference Include="Plugin.LocalNotification" Version="10.1.4" />
 	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
 	</ItemGroup>

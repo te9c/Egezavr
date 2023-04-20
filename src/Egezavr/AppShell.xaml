@@ -5,16 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Egezavr"
     >
-
-    <Tab>
-        <ShellContent
+    
+    <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:WeekPage}"
         Route="MainPage" />
-        <ShellContent
-            Title="SecPage"
-            ContentTemplate="{DataTemplate local:TaskPage}"
-            Route="SecPage"/>
-    </Tab>
 
 </Shell>

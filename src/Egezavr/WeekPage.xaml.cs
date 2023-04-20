@@ -70,19 +70,4 @@ public partial class WeekPage : ContentPage
 			}
 		} while (itemMoved);
     }
-	
-	//private async void SaveActivityList(object sender,  EventArgs e)
-	//{
-	//	var dayStack = sender as VerticalStackLayout ?? throw new ArgumentException(sender.ToString());
-	//	var path = FileSystem.Current.AppDataDirectory;
-	//	var fullPath = Path.Combine(path, "MyFile.txt");
-
-		
-	//	List<Activity> activityList = new();
-	//	foreach (var i in dayStack)
-	//	{
-	//		if (i is Activity activity)
-	//			activityList.Append(activity);
-	//	}
-	//}
 }
