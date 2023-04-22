@@ -70,6 +70,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\arrowdown.svg" />
+	  <None Remove="Resources\Images\arrowup.svg" />
+	  <None Remove="Resources\Images\book.svg" />
+	  <None Remove="Resources\Images\calendar.svg" />
 	  <None Remove="Resources\Images\x_circle.svg" />
 	</ItemGroup>
 
@@ -85,6 +89,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PopupChooseActivity.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="TaskPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="WeekPage.xaml">

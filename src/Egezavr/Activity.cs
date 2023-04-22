@@ -92,23 +92,23 @@ namespace Egezavr
                 },
             };
 
-            Button exitButton = new()
+            Button removeButton = new()
             {
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
                 BackgroundColor = Colors.Transparent,
                 // Source = ImageSource.FromFile("x_circle.svg"),
             };
-            Image exitButtonImage = new()
+            Image removeButtonImage = new()
             {
                 Source = ImageSource.FromFile("x_circle.svg"),
                 WidthRequest = HeightRequest * 0.7,
                 HeightRequest = HeightRequest * 0.7,
             };
-            grid.Add(exitButtonImage, 1, 0);
-            grid.Add(exitButton, 1, 0);
-            grid.SetRowSpan(exitButton, 2);
-            grid.SetRowSpan(exitButtonImage, 2);
+            grid.Add(removeButtonImage, 1, 0);
+            grid.Add(removeButton, 1, 0);
+            grid.SetRowSpan(removeButton, 2);
+            grid.SetRowSpan(removeButtonImage, 2);
 
             grid.Add(new Label
             {
@@ -126,7 +126,7 @@ namespace Egezavr
                 TextColor = Colors.Black
             }, 0, 1);
 
-            exitButton.Clicked += (sender, args) =>
+            removeButton.Clicked += (sender, args) =>
             {
                 var stack = Parent as StackBase;
                 stack.Remove(this);
