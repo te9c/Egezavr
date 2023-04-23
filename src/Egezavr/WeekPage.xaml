@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Egezavr.WeekPage"
-             Title="Егэзавр">
+             Title="Расписание">
     <ScrollView>
         <VerticalStackLayout Spacing="15" Padding="5,0,5,10" x:Name="MainVerticalStack">
             <VerticalStackLayout x:Name="MondayStack" Margin="5,10,5,0" ChildAdded="DayStack_ChildAdded">

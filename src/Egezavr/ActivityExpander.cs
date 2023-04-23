@@ -14,16 +14,19 @@ namespace Egezavr
         int AllCheckBoxes { get; set; } = 0;
 
         int AllCheckedCheckBoxes { get; set; } = 0;
+
+        public readonly int taskOptionsIndex;
         private ProgressBar ProgressBar { get; set; }
-        public ActivityExpander(int examOptionIndex, List<string> checkboxOptions) {
+        public ActivityExpander(int tasksOptionIndex) {
             AllCheckedCheckBoxes = 0;
+            this.taskOptionsIndex = tasksOptionIndex;
 
             // Border setup starts
             Margin = new Thickness(0, 10, 0, 0);
             StrokeShape = new RoundRectangle() { CornerRadius = 20, };
             StrokeThickness = 3;
             Stroke = Color.FromArgb("#363F3E");
-            BackgroundColor = Constants.ExamColors[examOptionIndex];
+            BackgroundColor = Constants.ExamColors[tasksOptionIndex];
             // Border setup ends
 
             Expander expander = new();
@@ -71,7 +74,7 @@ namespace Egezavr
 
             grid.Add(new Label
             {
-                Text = Constants.ExamOptions[examOptionIndex],
+                Text = Constants.TasksOptions[tasksOptionIndex],
                 VerticalTextAlignment = TextAlignment.End,
                 FontSize = 18,
                 Margin = new Thickness(15, 0, 0, 0),
@@ -108,7 +111,7 @@ namespace Egezavr
             {
                 if (e.PropertyName == "Progress")
                 {
-                    progressPercentageLabel.Text = $"{ProgressBar.Progress * 100}%";
+                    progressPercentageLabel.Text = $"{(int)(Math.Round(ProgressBar.Progress, 2) * 100)}%";
                 };
             };
             progressBarGrid.Add(ProgressBar,1, 0);
@@ -127,10 +130,13 @@ namespace Egezavr
 
             // Content starts
 
-            foreach (string str in checkboxOptions)
+            foreach (string str in Constants.TasksContent[tasksOptionIndex])
             {
                 AllCheckBoxes++;
-                CheckBox checkBox = new CheckBox();
+                CheckBox checkBox = new CheckBox() { 
+                    VerticalOptions = LayoutOptions.Fill,
+                    HorizontalOptions = LayoutOptions.Fill,
+                };
                 checkBox.CheckedChanged += (s, e) =>
                 {
                     if (checkBox.IsChecked)
@@ -142,17 +148,31 @@ namespace Egezavr
                         AllCheckedCheckBoxes--;
                     }
 
-                    ProgressBar.Progress = AllCheckedCheckBoxes / AllCheckBoxes;
+                    ProgressBar.Progress = (double)AllCheckedCheckBoxes / (double)AllCheckBoxes;
                 };
                 contentStack.Add(new HorizontalStackLayout
                 {
                     Children =
                     {
                         checkBox,
-                        new Label() { Text = str, VerticalTextAlignment = TextAlignment.Center },
+                        new Label() { Text = str, VerticalTextAlignment = TextAlignment.Center, LineBreakMode = LineBreakMode.WordWrap, WidthRequest = 300},
                     }
                 });
             }
+
+            Button removeButton = new()
+            {
+                HorizontalOptions = LayoutOptions.Fill,
+                BackgroundColor = Colors.LightGray,
+                Text = "Удалить занятие",
+                TextColor = Colors.Black,
+            };
+            removeButton.Clicked += (s, e) =>
+            {
+                if (Parent is StackBase stackBase)
+                    stackBase.Remove(this);
+            };
+            contentStack.Add(removeButton);
         }
     }
 }
