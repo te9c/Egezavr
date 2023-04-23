@@ -164,8 +164,9 @@ namespace Egezavr
             {
                 HorizontalOptions = LayoutOptions.Fill,
                 BackgroundColor = Colors.LightGray,
-                Text = "Удалить занятие",
+                Text = "Удалить предмет",
                 TextColor = Colors.Black,
+                Margin = new Thickness(0, 20, 0, 0)
             };
             removeButton.Clicked += (s, e) =>
             {
