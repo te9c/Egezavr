@@ -10,7 +10,8 @@
             
             <VerticalStackLayout>
                 <Label Text="Тип занятия:" FontSize="22"/>
-                <Picker x:Name="ExamPicker" SelectedIndexChanged="ExamPicker_SelectedIndexChanged" FontSize="18" Title="Выберите задание..."/>
+                <Picker x:Name="ExamPicker" SelectedIndexChanged="ExamPicker_SelectedIndexChanged" FontSize="18" 
+                        Title="Выберите задание..." TitleColor="{StaticResource Gray400}"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout  Spacing="0">
